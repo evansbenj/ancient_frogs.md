@@ -1,5 +1,10 @@
 # Mapping and coverage
 
+* working directory on bionc
+```
+/mnt/scratch/ben_evans/ancient_frogz/modern_frogz
+```
+
 * convert bam to paired fastq
 ```
 samtools bam2fq R7931.bam > R7931.fastq
