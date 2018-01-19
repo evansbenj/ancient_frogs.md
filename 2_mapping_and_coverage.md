@@ -48,3 +48,11 @@ Then I transferred the files to bionc and ran stampy there like this:
 ```
 /mnt/expressions/ben_evans/bin/stampy-1.0.32/stampy.py -g xenXL_MT -h xenXL_MT --substitutionrate=0.05 -o ./modern_frogz/R7935_stampy_to_XLmtDNA.bam -M ./modern_frogz/R7935_r1.corfixed.fastq ./modern_frogz/R7935_r2.corfixed.fastq
 ```
+and sorted the bam:
+```
+/mnt/expressions/ben_evans/bin/samtools/samtools sort ./modern_frogz/R7935_stampy_to_XBmtDNA.bam -o ./modern_frogz/R7935_stampy_to_XBmtDNA_sorted.bam
+```
+and checked coverage:
+```
+/mnt/expressions/ben_evans/bin/samtools/samtools depth ./modern_frogz/R7935_stampy_to_XLmtDNA_sorted.bam -a |  awk '{sum+=$3} END { print "Average = ",sum/NR}'
+```
