@@ -56,3 +56,7 @@ and checked coverage:
 ```
 /mnt/expressions/ben_evans/bin/samtools/samtools depth ./modern_frogz/R7935_stampy_to_XLmtDNA_sorted.bam -a |  awk '{sum+=$3} END { print "Average = ",sum/NR}'
 ```
+and count how many sites have no coverage at all
+```
+/mnt/expressions/ben_evans/bin/samtools/samtools depth R7947_stampy_to_XLmtDNA_sorted.bam -a |  grep -c -P '\t0'
+```
