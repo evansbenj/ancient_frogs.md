@@ -60,3 +60,12 @@ and count how many sites have no coverage at all
 ```
 /mnt/expressions/ben_evans/bin/samtools/samtools depth R7947_stampy_to_XLmtDNA_sorted.bam -a |  grep -c -P '\t0'
 ```
+Separate out mapped reads only:
+```
+samtools view -b -F4 R7953_stampy_to_XLmtDNA.bam > R7953_stampy_to_XLmtDNA_onlymapped.bam
+```
+and view them:
+```
+samtools view R7953_stampy_to_XLmtDNA_onlymapped.bam | more
+```
+
