@@ -114,4 +114,7 @@ java -Xmx8G -jar /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10
 java -Xmx8G -jar /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10-07-g1994025/GenomeAnalysisTK.jar -T HaplotypeCaller -R ../xenXL_MT.fasta -I 16294_stampy_to_XLmtDNA_rg_sorted.bam --emitRefConfidence GVCF -o 16294_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -out_mode EMIT_ALL_CONFIDENT_SITES
 ```
 
-
+and concatenate
+```
+java -Xmx8G -cp /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10-07-g1994025/GenomeAnalysisTK.jar org.broadinstitute.gatk.tools.CatVariants -R ../xenXL_MT.fasta -V BMNH1947_2_24_78_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -V BMNH1947_2_24_79_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -V 16294_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -out ancientfrogz.g.vcf.gz -assumeSorted
+```
