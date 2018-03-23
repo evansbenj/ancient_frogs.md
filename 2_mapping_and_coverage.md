@@ -69,3 +69,49 @@ and view them:
 samtools view R7953_stampy_to_XLmtDNA_onlymapped.bam | more
 ```
 
+# Genotyping
+
+first add readgroups
+```
+java -jar /mnt/expressions/ben_evans/bin/picard/picard.jar AddOrReplaceReadGroups I=BMNH1947_2_24_78_stampy_to_XLmtDNA.bam O=BMNH1947_2_24_78_stampy_to_XLmtDNA_rg.bam RGID=BMNH1947_2_24_78 RGLB=BMNH1947_2_24_78 RGPL=illumina RGPU=BMNH1947_2_24_78 RGSM=BMNH1947_2_24_78
+```
+```
+java -jar /mnt/expressions/ben_evans/bin/picard/picard.jar AddOrReplaceReadGroups I=BMNH1947_2_24_79_stampy_to_XLmtDNA.bam O=BMNH1947_2_24_79_stampy_to_XLmtDNA_rg.bam RGID=BMNH1947_2_24_79 RGLB=BMNH1947_2_24_79 RGPL=illumina RGPU=BMNH1947_2_24_79 RGSM=BMNH1947_2_24_79
+```
+```
+java -jar /mnt/expressions/ben_evans/bin/picard/picard.jar AddOrReplaceReadGroups I=16294_stampy_to_XLmtDNA.bam O=16294_stampy_to_XLmtDNA_rg.bam RGID=16294 RGLB=16294 RGPL=illumina RGPU=16294 RGSM=16294
+```
+then sort
+```
+samtools sort BMNH1947_2_24_78_stampy_to_XLmtDNA_rg.bam -o BMNH1947_2_24_78_stampy_to_XLmtDNA_rg_sorted.bam
+```
+```
+samtools sort BMNH1947_2_24_79_stampy_to_XLmtDNA_rg.bam -o BMNH1947_2_24_79_stampy_to_XLmtDNA_rg_sorted.bam
+```
+```
+samtools sort 16294_stampy_to_XLmtDNA_rg.bam -o 16294_stampy_to_XLmtDNA_rg_sorted.bam
+```
+
+then index bam files
+```
+samtools index BMNH1947_2_24_78_stampy_to_XLmtDNA_rg_sorted.bam
+```
+```
+samtools index BMNH1947_2_24_79_stampy_to_XLmtDNA_rg_sorted.bam
+```
+```
+samtools index 16294_stampy_to_XLmtDNA_rg_sorted.bam
+```
+
+then genotype
+```
+java -Xmx8G -jar /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10-07-g1994025/GenomeAnalysisTK.jar -T HaplotypeCaller -R ../xenXL_MT.fasta -I BMNH1947_2_24_78_stampy_to_XLmtDNA_rg_sorted.bam --emitRefConfidence GVCF -o BMNH1947_2_24_78_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -out_mode EMIT_ALL_CONFIDENT_SITES
+```
+```
+java -Xmx8G -jar /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10-07-g1994025/GenomeAnalysisTK.jar -T HaplotypeCaller -R ../xenXL_MT.fasta -I BMNH1947_2_24_79_stampy_to_XLmtDNA_rg_sorted.bam --emitRefConfidence GVCF -o BMNH1947_2_24_79_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -out_mode EMIT_ALL_CONFIDENT_SITES
+```
+```
+java -Xmx8G -jar /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10-07-g1994025/GenomeAnalysisTK.jar -T HaplotypeCaller -R ../xenXL_MT.fasta -I 16294_stampy_to_XLmtDNA_rg_sorted.bam --emitRefConfidence GVCF -o 16294_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -out_mode EMIT_ALL_CONFIDENT_SITES
+```
+
+
