@@ -116,5 +116,5 @@ java -Xmx8G -jar /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10
 
 and concatenate
 ```
-java -Xmx8G -jar /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10-07-g1994025/GenomeAnalysisTK.jar -T CombineGVCFs -R ../xenXL_MT.fasta -V BMNH1947_2_24_78_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -V BMNH1947_2_24_79_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -V 16294_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -o ancientfrogz.g.vcf.gz -assumeSorted
+java -Xmx8G -jar /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10-07-g1994025/GenomeAnalysisTK.jar -T CombineGVCFs -R ../xenXL_MT.fasta -V BMNH1947_2_24_78_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -V BMNH1947_2_24_79_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -V 16294_stampy_to_XLmtDNA_rg_sorted.bam.g.vcf.gz -o ancientfrogz.g.vcf.gz 
 ```
