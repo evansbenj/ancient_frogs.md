@@ -20,5 +20,7 @@ samtools index R7931_mapped_to_XT_sorted.bam
 # Remove unmapped, non-merged, filter-flagged sequences, remove duplicates, create summary statistic
 /home/mmeyer/perlscripts/solexa/analysis/analyzeBAM.pl -qual 25 -paired R7931_mapped_to_XT_sorted.bam 
 
+# consensus caller
+/home/mmeyer/perlscripts/solexa/analysis/consensus_from_bam.pl -ref /mnt/scratch/ben_evans/ancient_frogz/xenTr_MT.fasta R7931_mapped_to_XT_sorted.uniq.L35MQ25.bam
 
 
