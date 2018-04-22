@@ -24,3 +24,8 @@ samtools index R7931_mapped_to_XT_sorted.bam
 /home/mmeyer/perlscripts/solexa/analysis/consensus_from_bam.pl -ref /mnt/scratch/ben_evans/ancient_frogz/xenTr_MT.fasta R7931_mapped_to_XT_sorted.uniq.L35MQ25.bam
 
 
+This was sufficient using Matthias' scripts:
+* bwa bam2bam -n 0.01 -o 2 -l 16500 -g /mnt/scratch/ben_evans/ancient_frogz/xenXL_MT.fasta -f R7935_mapped_to_XL.bam R7935.bam
+* samtools sort R7935_mapped_to_XL.bam -o R7935_mapped_to_XL_sorted.bam
+* /home/mmeyer/perlscripts/solexa/analysis/analyzeBAM.pl -qual 25 -paired R7935_mapped_to_XL_sorted.bam 
+* /home/mmeyer/perlscripts/solexa/analysis/consensus_from_bam.pl -ref /mnt/scratch/ben_evans/ancient_frogz/xenXL_MT.fasta R7935_mapped_to_XL_sorted.uniq.L35MQ25.bam
