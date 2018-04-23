@@ -42,7 +42,8 @@ cat R7935.fastq | grep '^@.*/2$' -A 3 --no-group-separator > R7935_r2.fastq
 ```
 # get the singletons also
 ```
-cat R7935.fastq | grep -v '^@.*/1$\|^@.*/2$' -A 3 --no-group-separator > R7935_singletons.fastq
+cat R7935.fastq | grep '^@.*[0-9][0-9]$' -A 3 --no-group-separator > R7935_singletons.fastq
+
 ```
 # repair paired fastq
 ```
