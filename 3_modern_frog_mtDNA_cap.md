@@ -66,3 +66,8 @@ cat R7935_r2.corfixed.fastq R7935_singletons.fastq > R7935_r2.corfixed_and_singe
 ```
 /mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fq --left R7935_r1.corfixed.fastq --right R7935_r2.corfixed_and_singetons.fastq --no_normalize_reads --max_memory 10G --KMER_SIZE 29
 ```
+# check which scaffolds match with blast:
+```
+blastn -query Trinity.fasta -db /mnt/scratch/ben_evans/ancient_frogz/XL_blastable_genome -out Trinity_blast.out -outfmt 6
+```
+
