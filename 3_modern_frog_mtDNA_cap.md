@@ -45,6 +45,15 @@ cat R7935.fastq | grep '^@.*/2$' -A 3 --no-group-separator > R7935_r2.fastq
 cat R7935.fastq | grep '^@.*[0-9][0-9]$' -A 3 --no-group-separator > R7935_singletons.fastq
 
 ```
+# fix quality score (']' indicates bases that are merged in both directions)
+```
+sed -i -e 's/]/I/g' R7935_singletons.fastq
+```
+# add '/1' at end of header (this is required by trinity)
+```
+sed -i '/>/ s_$_/1_' R7935_singletons.fastq
+```
+
 # repair paired fastq
 ```
 /mnt/expressions/ben_evans/bin/bbmap_old/bbmap/repair.sh -Xmx30g in1=R7935_r1.fastq in2=R7935_r2.fastq out1=R7935_r1.corfixed.fastq out2=R7935_r2.corfixed.fastq outsingle=R7935singletons.fastq
