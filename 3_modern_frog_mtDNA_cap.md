@@ -70,6 +70,11 @@ cat R7935_r2.corfixed.fastq R7935_singletons.fastq > R7935_r2.corfixed_and_singe
 ```
 blastn -query Trinity.fasta -db /mnt/scratch/ben_evans/ancient_frogz/XL_blastable_genome -out Trinity_blast.out -outfmt 6
 ```
+# get names of scaffolds
+```
+cut -f 1 Trinity_blast.out > ids.file
+```
+
 # pull out the mtDNA seq
 
 Take the partial header name out of Trinity_blast.out and make a file called 'ids.file' with this in it. Then type this:
