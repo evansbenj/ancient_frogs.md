@@ -81,3 +81,7 @@ Take the partial header name out of Trinity_blast.out and make a file called 'id
 ```
 perl -ne 'if(/^>(\S+)/){$c=$i{$1}}$c?print:chomp;$i{$_}=1 if @ARGV' ids.file Trinity.fasta > mtDNA.fasta
 ```
+# align
+```
+mafft --adjustdirection input > output
+```
