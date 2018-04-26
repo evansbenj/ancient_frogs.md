@@ -85,3 +85,13 @@ perl -ne 'if(/^>(\S+)/){$c=$i{$1}}$c?print:chomp;$i{$_}=1 if @ARGV' ids.file Tri
 ```
 mafft --adjustdirection input > output
 ```
+
+# extract region of concatenated assembly
+index the fasta file
+```
+samtools faidx victorianus_R7945_mtDNA.fasta
+```
+extract a portion:
+```
+samtools faidx victorianus_R7945_mtDNA.fasta victorianus_R7945_mtDNA:0-17729 > victorianus1_R7945_mtDNA.fasta
+```
