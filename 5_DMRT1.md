@@ -31,3 +31,30 @@ sed -i -e 's/>/>R7931_DMRT1_exon1_/g' R7931_DMRT1_exon1.fasta
 ```
 
 # And repeat for all 4 exons
+
+# Then cat and align DMRT1 exons, RAG1 and RAG2
+
+```
+cat RAG1_allquery.fasta spl*/R*/trin*/R*RAG1_exon1.fasta > All_RAG1.fasta
+```
+```
+cat RAG2_allquery.fasta spl*/R*/trin*/R*RAG2_exon1.fasta > All_RAG2.fasta 
+```
+```
+cat DMRT1_exon1_allquery.fasta spl*/R*/trin*/R*DMRT1_exon1.fasta > All_DMRT1_exon1.fasta
+```
+```
+cat DMRT1_exon2_allquery.fasta spl*/R*/trin*/R*DMRT1_exon2.fasta > All_DMRT1_exon2.fasta
+```
+```
+cat DMRT1_exon3_allquery.fasta spl*/R*/trin*/R*DMRT1_exon3.fasta > All_DMRT1_exon3.fasta
+```
+```
+cat DMRT1_exon4_allquery.fasta spl*/R*/trin*/R*DMRT1_exon4.fasta > All_DMRT1_exon4.fasta
+```
+```
+cat DMRT1_exon5_allquery.fasta spl*/R*/trin*/R*DMRT1_exon5.fasta > All_DMRT1_exon5.fasta
+```
+```
+cat DMRT1_exon6_allquery.fasta spl*/R*/trin*/R*DMRT1_exon6.fasta > All_DMRT1_exon6.fasta
+```
