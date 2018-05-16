@@ -1,5 +1,14 @@
 # nuclear capture data
 
+# Summary of workflow for nuclear capture data
+
+For modern frogs (and ancient ones) I did a denovo assembly in order to separately assemble duplicated reads.  THis worked well for the modern frogs but not (I think) for the ancient ones.  For the ancient ones I am going to map reads directly to the fishbergi reference.
+
+For RAG2. the fishbergi reference is here:
+```
+/mnt/scratch/ben_evans/ancient_frogz/modernFrogs_nuclear_caps_180322_D00829_0128_lane3/R7935_fisch_RAG2.fasta
+```
+
 # make specific folder for each mtDNA genome
 ```
 mkdir /mnt/scratch/ben_evans/ancient_frogz/180322_D00829_0128_lane3_modernFrogs_nuclear_caps/split_unmapped_reads/R7937
