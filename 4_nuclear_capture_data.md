@@ -8,6 +8,8 @@ For RAG2. the fishbergi reference is here:
 ```
 /mnt/scratch/ben_evans/ancient_frogz/modernFrogs_nuclear_caps_180322_D00829_0128_lane3/R7935_fisch_RAG2.fasta
 ```
+Need to make ones for RAG1alphabeta and DMRT1alphabeta...
+
 
 # make specific folder for each mtDNA genome
 ```
