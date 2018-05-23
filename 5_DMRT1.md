@@ -58,3 +58,8 @@ cat DMRT1_exon5_allquery.fasta spl*/R*/trin*/R*DMRT1_exon5.fasta > All_DMRT1_exo
 ```
 cat DMRT1_exon6_allquery.fasta spl*/R*/trin*/R*DMRT1_exon6.fasta > All_DMRT1_exon6.fasta
 ```
+
+# Linearize fasta files
+```
+sed -e 's/\(^>.*$\)/#\1#/' All_DMRT1_exon6_align.fasta | tr -d "\r" | tr -d "\n" | sed -e 's/$/#/' | tr "#" "\n" | sed -e '/^$/d' > All_DMRT1_exon6_align_linear.fasta
+```
