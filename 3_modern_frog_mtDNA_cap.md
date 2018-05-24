@@ -13,20 +13,25 @@ XL: /mnt/scratch/ben_evans/ancient_frogz/xenXL_MT.fasta
 XB: /mnt/scratch/ben_evans/ancient_frogz/xenXB_MT.fasta
 
 # map 
+```
 bwa bam2bam -n 0.01 -o 2 -l 16500 -g /mnt/scratch/ben_evans/ancient_frogz/xenTr_MT.fasta -f R7931_mapped_to_XT.bam R7931.bam
-
+```
 # sort
+```
 samtools sort R7931_mapped_to_XT.bam -o R7931_mapped_to_XT_sorted.bam
-
+```
 # rmdups using circular option
+```
 /home/public/user/Johann/biohazard-tools/bam-rmdup -c --circular=fischbergi_R7938_mtDNA:17189 G9092_mapped_to_fischbergi_sorted.bam -o R7931_mapped_to_XT_sorted_circular.bam
-
+```
 # Remove unmapped, non-merged, filter-flagged sequences, create summary statistic but DO NOT remove duplicates
+```
 /home/mmeyer/perlscripts/solexa/analysis/analyzeBAM.pl -nodedup -qual 25 -paired R7931_mapped_to_XT_sorted_circular.bam 
-
+```
 # consensus caller
+```
 /home/mmeyer/perlscripts/solexa/analysis/consensus_from_bam.pl -ref /mnt/scratch/ben_evans/ancient_frogz/xenTr_MT.fasta R7931_mapped_to_XT_sorted_circular.uniq.L35MQ25.bam
-
+```
 
 
 # Doing a de novo assembly instead
