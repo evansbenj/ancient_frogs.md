@@ -3,8 +3,9 @@
 For all individuals I first attempted a de novo assembly after extracting paired and merged reads and replacing the quality scores of the merged portion of merged reads with an 'I' which indicates the highest quality.  For almost all modern individuals I was able to obtain a complete mtDNA assembly that was around 17kb.  For these individuals I used this assembly in the alignment and phylogenetic reconstruction.  There were 5 individuals that made an concatenated mtDNA assembly (trop, mellotrop, victo, laevis, wittei), one with an incomplete assembly (poweri) and one individual (cfboum) that did not assemble.  For the ones that made a concatenated assembly, I re-assembled using trinity with kmer = 21 or 32 (the max).  For vict and mello the 21mer provided a non-concatenated assembly that was then used in the analysis and the same for laevis and wittei with a kmer = 32.  For poweri, the assembly was fragmented into 4 contigs what were independently aligned with the others using mafft with -adjustdirection to deal with revcomp assemblies.  The poweri sequence was then concatenated manually into a complete genome.  For cfboum, the assembly only made a small contig.  Instead the boumbaensis sequence was used as a reference and a consensus was called using unique reads after deduping first using Matthias scripts: /analyzeBAM.pl and concatenate_bam.pl as detailed below.
 
 # splitting unmapped bam file by perfect index match:
+```
 /mnt/scratch/ben_evans/ancient_frogz/180322/split_mapped_reads$ /home/mmeyer/perlscripts/solexa/filework/splitBAM.pl -byfile ../180322_indexcombs_desc.txt /mnt/ngs_data/180322_M02279_0234_000000000-BLB6T_LL_F2174_BN_G5570/Bustard/BWA/proc1/s_1_sequence_ancient_xenXL_MT.bam >splitting_stats.txt
-
+```
 indexes are here: /mnt/scratch/ben_evans/ancient_frogz/180403_modern_frogz_mt_caps/split_unmapped_reads/splitting_stats.txt
 
 # three reference genomes:
