@@ -21,6 +21,9 @@ samtools sort R7931_mapped_to_XT.bam -o R7931_mapped_to_XT_sorted.bam
 # index
 samtools index R7931_mapped_to_XT_sorted.bam
 
+# rmdups using circular option
+/home/public/user/Johann/biohazard-tools/bam-rmdup -c --circular=fischbergi_R7938_mtDNA:17189 G9092_mapped_to_fischbergi_sorted.bam -o G9092_mapped_to_fischbergi_sorted_circular.bam
+
 # Remove unmapped, non-merged, filter-flagged sequences, remove duplicates, create summary statistic
 /home/mmeyer/perlscripts/solexa/analysis/analyzeBAM.pl -qual 25 -paired R7931_mapped_to_XT_sorted.bam 
 
