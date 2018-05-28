@@ -1,6 +1,6 @@
 # Mining DMRT1 exons out of trinity assembly
 
-I first made a fasta file for each of the 4 exons.  I did this for ST, XLalpha, and XLbeta. Using any one should be sufficient to identify any match, even for the dodecaploids.
+I first made a fasta file for each of the 6 exons.  I did this for ST, XLalpha, and XLbeta. Using any one should be sufficient to identify any match, even for the dodecaploids.
 
 # Change to the directory
 ```
@@ -59,7 +59,93 @@ cat DMRT1_exon5_allquery.fasta spl*/R*/trin*/R*DMRT1_exon5.fasta > All_DMRT1_exo
 cat DMRT1_exon6_allquery.fasta spl*/R*/trin*/R*DMRT1_exon6.fasta > All_DMRT1_exon6.fasta
 ```
 
-# Linearize fasta files
+# Making alignment ladder
+Align with mafft (mafft -adjustdirection input.fasta > output.fasta). Now to organize the alignment, I wrote a script to sort the data with the column with data on the 5' most side first, and then with the most gaps listed on the bottom.  To do this, first linearize fasta files like this:
+
 ```
 sed -e 's/\(^>.*$\)/#\1#/' All_DMRT1_exon6_align.fasta | tr -d "\r" | tr -d "\n" | sed -e 's/$/#/' | tr "#" "\n" | sed -e '/^$/d' > All_DMRT1_exon6_align_linear.fasta
+```
+And then run this script (Converts_fasta_alignment_to_slide.pl):
+```
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+
+# This program reads in a nexus file and re-orders taxa so that they begin with the taxon
+# with data in the beginning and end with taxa with data in the end.
+
+# This is useful when you have a large mafft alignment with some sketchy sequences
+# because one can then more easily make taxon sets 
+
+# Run like this "Converts_fasta_alignment_to_slide.pl inputprefix"
+
+# The output prefix will be: inputprefix_reorder.fasta
+
+# need to linearize the fasta file first like this:
+# sed -e 's/\(^>.*$\)/#\1#/' input.fasta | tr -d "\r" | tr -d "\n" | sed -e 's/$/#/' | tr "#" "\n" | sed -e '/^$/d' > input_linear.fasta
+
+my $inputfile = $ARGV[0];
+
+# open an outputfile
+unless (open(OUTFILE, ">".$inputfile."_reorder.fasta"))  {
+	print "I can\'t write to $inputfile._reorder.fasta\n";
+	exit;
+}
+print "Creating output file: $inputfile._reorder.fasta\n";
+
+
+unless (open DATAINPUT, "$inputfile.fasta") {
+	print "Can not find the input file.\n";
+	exit;
+}
+
+my $hashkey;
+my %datahash;
+my @temp;
+# read in data into a hash
+while ( my $line = <DATAINPUT>) {
+	chomp($line);
+	if($line =~ '>'){
+		# this is a fasta header
+		@temp = split(" ",$line);
+		$hashkey = $temp[0];
+	}
+	else{
+		$datahash{$hashkey}[0]=$line;
+	}
+}		
+close DATAINPUT;
+
+my $gapcounter;
+my @array;
+my %rankhash;
+foreach my $key (sort(keys %datahash)) {
+	if(defined($datahash{$key}[0])){
+		#print $key,"\n",$datahash{$key}[0],"\n";
+		@array=split("",$datahash{$key}[0]);
+		# count the gaps in the beginning
+		$gapcounter=0;
+		foreach (@array){
+			if($_ ne "-"){
+				last;
+			}
+			else{
+				$gapcounter+=1;
+			}
+		}
+		$rankhash{$key}=$gapcounter;
+	}	
+}
+# sort keys by value
+my @keys = sort { $rankhash{$a} <=> $rankhash{$b} } keys %rankhash;
+
+foreach (@keys) {
+		if(defined($datahash{$_}[0])){
+			print OUTFILE $_,"\n",$datahash{$_}[0],"\n";
+		}	
+}
+close OUTFILE
+
+
 ```
