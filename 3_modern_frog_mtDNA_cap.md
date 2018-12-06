@@ -9,10 +9,14 @@ For all individuals I first attempted a de novo assembly after extracting paired
 indexes are here: /mnt/scratch/ben_evans/ancient_frogz/180403_modern_frogz_mt_caps/split_unmapped_reads/splitting_stats.txt
 
 # three reference genomes:
+```
 XT: /mnt/scratch/ben_evans/ancient_frogz/xenTr_MT.fasta
+```
+```
 XL: /mnt/scratch/ben_evans/ancient_frogz/xenXL_MT.fasta
+```
 XB: /mnt/scratch/ben_evans/ancient_frogz/xenXB_MT.fasta
-
+```
 # map 
 ```
 bwa bam2bam -n 0.01 -o 2 -l 16500 -g /mnt/scratch/ben_evans/ancient_frogz/xenTr_MT.fasta -f R7931_mapped_to_XT.bam R7931.bam
