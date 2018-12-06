@@ -56,6 +56,10 @@ sed -i -e 's/]/I/g' R7935_singletons.fastq
 ```
 # add '/1' at end of header (this is required by trinity)
 ```
+awk '/^@M02279/ {$0=$0"/1"} 1' G10631_singletons.fastq > newfile.fq
+```
+this does not work:
+```
 sed -i '/>/ s_$_/1_' R7935_singletons.fastq
 ```
 
