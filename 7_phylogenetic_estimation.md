@@ -8,5 +8,4 @@ on sharcnet in this directory: `/work/ben/iqtree-1.6.8-Linux/bin/Xenopus_mtDNA_g
 ../iqtree -s All_mtDNA_genomez_new_and_Gb_align4.nexus_only_genus_Xenopus.align_GBLOCKS.nxs -m TEST -nt 1 -pre All_mtDNA_genomez_new_and_Gb_align4.nexus_only_genus_Xenopus.align_GBLOCKS.nxs_
 ```
 ```
-../iqtree -s All_mtDNA_genomez_new_and_Gb_align4.nexus_only_genus_Xenopus.align_GBLOCKS.nxs -m XX -bb 1000
-```
+../iqtree -s All_mtDNA_genomez_new_and_Gb_align4.nexus_only_genus_Xenopus.align_GBLOCKS.nxs -m GTR+F+I+G4 -bb 1000```
