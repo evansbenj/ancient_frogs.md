@@ -109,3 +109,19 @@ extract a portion:
 ```
 samtools faidx victorianus_R7945_mtDNA.fasta victorianus_R7945_mtDNA:0-17729 > victorianus1_R7945_mtDNA.fasta
 ```
+
+
+# Checking out the effects of the reference genome
+For the X. fraseri types, I also mapped to the XL genome.  The consensus can then be compared to the one from the fischbergi genome to see if there are any differences.
+```
+bwa bam2bam -n 0.01 -o 2 -l 16500 -g /mnt/scratch/ben_evans/ancient_frogz/xenXL_MT.fasta -f G9090_mapped_to_XL.bam G9090.bam
+bwa bam2bam -n 0.01 -o 2 -l 16500 -g /mnt/scratch/ben_evans/ancient_frogz/xenXL_MT.fasta -f G9091_mapped_to_XL.bam G9091.bam
+samtools sort G9090_mapped_to_XL.bam -o G9090_mapped_to_XL_sorted.bam
+samtools sort G9091_mapped_to_XL.bam -o G9091_mapped_to_XL_sorted.bam
+/home/public/user/Johann/biohazard-tools/bam-rmdup -c --circular=M10217.1_laevis_mtDNA:17553 G9090_mapped_to_XL_sorted.bam -o G9090_mapped_to_XL_sorted_circular.bam
+/home/public/user/Johann/biohazard-tools/bam-rmdup -c --circular=M10217.1_laevis_mtDNA:17553 G9091_mapped_to_XL_sorted.bam -o G9091_mapped_to_XL_sorted_circular.bam
+/home/mmeyer/perlscripts/solexa/analysis/analyzeBAM.pl -nodedup -qual 25 -paired G9090_mapped_to_XL_sorted_circular.bam
+/home/mmeyer/perlscripts/solexa/analysis/analyzeBAM.pl -nodedup -qual 25 -paired G9091_mapped_to_XL_sorted_circular.bam 
+/home/mmeyer/perlscripts/solexa/analysis/consensus_from_bam.pl -ref /mnt/scratch/ben_evans/ancient_frogz/xenXL_MT.fasta G9090_mapped_to_XL_sorted_circular.L35MQ25.bam
+/home/mmeyer/perlscripts/solexa/analysis/consensus_from_bam.pl -ref /mnt/scratch/ben_evans/ancient_frogz/xenXL_MT.fasta G9091_mapped_to_XL_sorted_circular.L35MQ25.bam
+```
