@@ -64,4 +64,7 @@ perl -ne 'if(/^>(\S+)/){$c=$i{$1}}$c?print:chomp;$i{$_}=1 if @ARGV' ids.file Tri
 awk -v seq="42732422 10004 289064 42567259-,...,42597465-" -v RS='>' '$1 == seq {print RS $0}' /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/abyss_genome_assembly/AO245_newtrim_scaffolds.fa
 ```
 
-
+This nuclear capture is now on graham here:
+```
+/home/ben/projects/rrg-ben/ben/ancient_frogz/modernFrogs_nuclear_caps_180322_D00829_0128_lane3
+```
