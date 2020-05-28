@@ -1,6 +1,9 @@
 # Mining DMRT1 exons out of trinity assembly
 
-I first made a fasta file for each of the 6 exons.  I did this for ST, XLalpha, and XLbeta. Using any one should be sufficient to identify any match, even for the dodecaploids.
+I first made a fasta file for each of the 6 exons.  I did this for ST, XLalpha, and XLbeta. Using any one should be sufficient to identify any match, even for the dodecaploids.  This was originally done on the MaxPlanck system but I have transferred the files to graham here:
+```
+/home/ben/projects/rrg-ben/ben/ancient_frogz/modernFrogs_nuclear_caps_180322_D00829_0128_lane3/split_unmapped_reads/R7958/trinity_out_dir
+```
 
 # Change to the directory
 ```
