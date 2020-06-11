@@ -74,5 +74,5 @@ We also did a capture of DMRT1, scanw, ccdc, sox3 and AR.  8916 probes, 2 bp til
 
 Data are here (on graham):
 ```
-/home/ben/project/ben/2020_Frog_Capture/200605_D00829_0342_lane1/
+/home/ben/projects/rrg-ben/ben/2020_Frog_Capture
 ```
