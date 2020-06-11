@@ -68,3 +68,11 @@ This nuclear capture is now on graham here:
 ```
 /home/ben/projects/rrg-ben/ben/ancient_frogz/modernFrogs_nuclear_caps_180322_D00829_0128_lane3
 ```
+
+# 2020 Capture Update
+We also did a capture of DMRT1, scanw, ccdc, sox3 and AR.  8916 probes, 2 bp tiling, company was Genscript.
+
+Data are here (on graham):
+```
+/home/ben/project/ben/2020_Frog_Capture/200605_D00829_0342_lane1/
+```
