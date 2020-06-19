@@ -54,6 +54,10 @@ screen -S trinnuc_R7937
 /mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fq --left R7937_nuclear_cap_r1.fastq --right R7937_nuclear_cap_r2.fastq --no_normalize_reads --max_memory 10G --KMER_SIZE 29
 ```
 ******
+make blastdb
+```
+makeblastdb -in Trinity.fasta -dbtype nucl -out Trinity.fasta_blastable
+```
 ```
 blastn -query Trinity.fasta -db /mnt/scratch/ben_evans/ancient_frogz/XL_blastable_genome -out Trinity_blast.out -outfmt 6
 ```
@@ -75,4 +79,11 @@ We also did a capture of DMRT1, scanw, ccdc, sox3 and AR.  8916 probes, 2 bp til
 Data are here (on graham):
 ```
 /home/ben/projects/def-ben/ben/2020_Frog_Capture/200605_D00829_0342_lane1/Final_Sequences
+```
+
+Did assembly in Germany
+
+make balst db
+```
+makeblastdb -in Trinity.fasta -dbtype nucl -out Trinity.fasta_blastable
 ```
