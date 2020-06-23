@@ -27,6 +27,10 @@ or, if there were multiple queries for the same exon, do this:
 ```
 cut -f 2 XL_dmw_ex4.out Xpyg_dmw_ex4_partial.out Xcliv_dmw_ex4_partial.out | sort | uniq > ids_exon1.file
 ```
+or, for scanw, first test if the alignment match is >300 bp, and only save the hits that are at least this big
+```
+awk '$4 > 300' XL_scanw_ex1.out | cut -f 2 > ids_exon1.file
+```
 # get the sequence of the assembled scaffolds(s)
 ```
 perl -ne 'if(/^>(\S+)/){$c=$i{$1}}$c?print:chomp;$i{$_}=1 if @ARGV' ids_exon1.file Trinity.fasta > R7931_DMRT1_exon1.fasta
