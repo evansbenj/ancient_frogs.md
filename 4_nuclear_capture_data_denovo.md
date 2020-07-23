@@ -87,3 +87,23 @@ make balst db
 ```
 makeblastdb -in Trinity.fasta -dbtype nucl -out Trinity.fasta_blastable
 ```
+Then, for each library, go to the folder:
+```
+cd ../../R7932/trinity_out_dir/
+```
+blast the capture seq
+```
+blastn -query /mnt/scratch/ben_evans/2020_Frog_Capture/Final_Sequences/XT_SOX3.fasta -db Trinity.fasta_blastable -out XT_SOX3.out -outfmt 6
+```
+get the ids of the matching assemblies
+```
+cut -f 2 XT_SOX3.out > ids_SOX3.file
+```
+get the seqs
+```
+perl -ne 'if(/^>(\S+)/){$c=$i{$1}}$c?print:chomp;$i{$_}=1 if @ARGV' ids_SOX3.file Trinity.fasta > R7931_SOX3.fasta
+```
+replace the names
+```
+sed -i -e 's/>/>R7931_SOX3_/g' R7931_SOX3.fasta
+```
