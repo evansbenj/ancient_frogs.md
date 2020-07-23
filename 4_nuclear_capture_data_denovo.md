@@ -112,3 +112,8 @@ replace the names
 ```
 sed -i -e 's/>/>R7931_SOX3_/g' R7931_SOX3.fasta
 ```
+concatenate the seqs
+```
+cat XL_ccdc69w_ex1_and_ex2.fasta R*/trin*/*ccdc_exon1_exon2.fasta > All_ccdc_exon1_and_exon2.fasta
+```
+and align wit mafft --adjustdirectionaccurately
