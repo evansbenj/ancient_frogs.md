@@ -83,7 +83,7 @@ Data are here (on graham):
 
 Did assembly in Germany
 
-make balst db
+make blast db
 ```
 makeblastdb -in Trinity.fasta -dbtype nucl -out Trinity.fasta_blastable
 ```
@@ -99,6 +99,11 @@ get the ids of the matching assemblies
 ```
 cut -f 2 XT_SOX3.out > ids_SOX3.file
 ```
+or with a 300 bp cutoff for a match:
+```
+awk '$4 > 300' XL_scanw_ex1.out | cut -f 2 > ids_exon1.file
+```
+
 get the seqs
 ```
 perl -ne 'if(/^>(\S+)/){$c=$i{$1}}$c?print:chomp;$i{$_}=1 if @ARGV' ids_SOX3.file Trinity.fasta > R7931_SOX3.fasta
