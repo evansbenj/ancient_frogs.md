@@ -117,3 +117,8 @@ concatenate the seqs
 cat XL_ccdc69w_ex1_and_ex2.fasta R*/trin*/*ccdc_exon1_exon2.fasta > All_ccdc_exon1_and_exon2.fasta
 ```
 and align wit mafft --adjustdirectionaccurately
+
+After making the aligned fasta file with mafft, it may be useful to delete everything after a square bracket from the trinity output:
+```
+sed -e 's/\[[^][]*//g' All_SOX3_gt300bp_align.fasta_mm > All_SOX3_gt300bp_align.fasta_mmm
+```
